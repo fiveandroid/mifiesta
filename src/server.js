@@ -3,6 +3,7 @@ const cors = require("cors");
 const routerUsers = require("./routes/user.route");
 const routerAuth = require("./routes/auth.route");
 const routeCustomer = require("./routes/customer.route");
+const routeProvider = require("./routes/provider.route");
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use("/users", routerUsers);
 app.use("/login", routerAuth);
 app.use("/customer", routeCustomer);
+app.use("/provider", routeProvider);
 
 app.get("/", (request, response) => {
   response.json({

@@ -2,13 +2,13 @@ const Customer = require("./../models/customer.model")
 
 
 const getAll = async () => {
-    const Customers = await Customer.find({})
-    return Customers
+    const customers = await Customer.find({})
+    return customers
 }
 
 const getById = async (id) => {
-    const Customer = await Customer.findById(id)
-    return Customer
+    const customer = await Customer.findById(id)
+    return customer
 }
 
 const create = (customerData) => {
