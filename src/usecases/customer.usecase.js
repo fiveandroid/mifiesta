@@ -11,4 +11,19 @@ const getById = async (id) => {
     return Customer
 }
 
-module.exports = { getAll, getById}
+const create = (customerData) => {
+    const customer = Customer.create(customerData)
+    return customer
+}
+
+const updateById = (id, newCustomerData) => {
+    const customerUpdated = Customer.findByIdAndUpdate(id, newCustomerData)
+    return customerUpdated
+}
+
+const deleteById = (id) => {
+    const customerToDelete = Customer.findByIdAndDelete(id)
+    return customerToDelete
+}
+
+module.exports = { getAll, getById, create, updateById, deleteById}
