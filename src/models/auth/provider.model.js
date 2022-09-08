@@ -27,7 +27,8 @@ const ProviderSchema = new Schema({
                 fixed: String,
                 mobile: String
             }
-        ]
+        ],
+        match: /[0-9]{10,12}/
     },
     address: {
         type: [
