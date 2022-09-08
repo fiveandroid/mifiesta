@@ -1,6 +1,6 @@
 const express = require("express")
-const { getAll, getById, create } = require("../usecases/user.usecase")
-const auth = require("../middlewares/auth.middleware")
+const { getAll, getById, create } = require("./../../usecases/auth/user.usecase")
+const auth = require("../../middlewares/auth.middleware")
 
 const router = express.Router();
 

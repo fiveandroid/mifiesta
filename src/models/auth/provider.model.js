@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-require("./../models/categories.model")
+require("./categories.model")
 mongoose.model("Categories");
 
 const ProviderSchema = new Schema({
@@ -66,7 +66,11 @@ const ProviderSchema = new Schema({
         type: String,
         maxlength: 500,
         required: true
-    }
+    },
+    createdAt: { 
+        type: Date, 
+        default: Date.now
+     }
 
 })
 

@@ -1,4 +1,5 @@
-const Provider = require("../models/provider.model")
+const Provider = require("./../../models/auth/provider.model")
+const bcrypt = require("bcrypt")
 
 
 const getAll = async () => {
@@ -11,7 +12,9 @@ const getById = async (id) => {
     return provider
 }
 
-const create = (providerData) => {
+const create = async (providerData) => {
+    const hash = await bcrypt.hash(providerData.password, 10)
+    providerData.password = hash;
     const provider = Provider.create(providerData)
     return provider
 }
@@ -26,4 +29,9 @@ const deleteById = (id) => {
     return providerToDelete
 }
 
-module.exports = { getAll, getById, create, updateById, deleteById}
+const findEmail = (mail) => {
+    const validatingEmail = Provider.findOne({email: mail});     
+    return validatingEmail;
+}
+
+module.exports = { getAll, getById, create, updateById, deleteById, findEmail}

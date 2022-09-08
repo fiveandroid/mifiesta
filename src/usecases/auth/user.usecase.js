@@ -1,7 +1,7 @@
 const createError = require("http-errors")
 const bcrypt = require("bcrypt")
-const User = require("../models/user.model")
-const jwt = require("../lib/jwt.lib")
+const User = require("./../../models/auth/user.model")
+const jwt = require("../../lib/jwt.lib")
 
 const getAll = () => {
   return User.find({})

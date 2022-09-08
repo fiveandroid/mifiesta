@@ -1,16 +1,16 @@
 const express = require("express");
-const { findById } = require("../models/user.model");
-const { getAll, getById, create, updateById, deleteById } = require("../usecases/customer.usecase");
+const { getAll, getById, create, updateById, deleteById, findEmail } = require("./../../usecases/auth/provider.usecase");
 
 const router = express.Router();
+const createError = require("http-errors");
 
 router.get("/", async (request, response) => {
   try {
-    const customers = await getAll();
+    const providers = await getAll();
     response.json({
       success: true,
       data: {
-        customers,
+        providers,
       },
     });
   } catch (err) {
@@ -25,11 +25,11 @@ router.get("/", async (request, response) => {
 router.get("/:id", async (request, response) => {
   const { id } = request.params;
   try {
-    const customer = await getById(id);
+    const provider = await getById(id);
     response.json({
       success: true,
       data: {
-        customer,
+        provider,
       },
     });
   } catch (err) {
@@ -42,15 +42,21 @@ router.get("/:id", async (request, response) => {
 });
 
 router.post("/", async (request, response) => {
-  const customerBody = request.body;
+  const emailExist = await findEmail(request.body.email); 
+  let newProvider = {};
+  const providerBody = request.body;
   try {
-    const newCustomer = await create(customerBody)
+    if (emailExist){
+      throw createError(409, "Este email ya está en uso. Elige otro");
+    } else {
+      newProvider = await create(providerBody);
+    }
 
     response.json({
         success: true,
-        message: 'Nuevo cliente creado',
+        message: 'Nuevo proveedor creado',
         data: {
-          newCustomer
+            newProvider
         }
     })
 
@@ -67,15 +73,15 @@ router.post("/", async (request, response) => {
 
 router.patch("/:id", async (request, response) => {
   const { id } = request.params
-  const customerBody = request.body;
+  const providerBody = request.body;
   try {
-    const newCustomer = await updateById(id,customerBody)
+    const newProvider = await updateById(id,providerBody)
 
     response.json({
         success: true,
-        message: 'Cliente actualizado',
+        message: 'Proveedor actualizado',
         data: {
-          newCustomer
+            newProvider
         }
     })
 
@@ -94,13 +100,13 @@ router.patch("/:id", async (request, response) => {
 router.delete("/:id", async(request, response) => {
   const { id } = request.params
   try {
-    const customerToDelete = await deleteById(id)
+    const providerToDelete = await deleteById(id)
 
     response.json({
         success: true,
-        message: 'Cliente borrado',
+        message: 'Proveedor borrado',
         data: {
-          customerToDelete
+          providerToDelete
         }
     })
 

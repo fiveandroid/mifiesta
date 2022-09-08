@@ -1,4 +1,5 @@
-const Customer = require("./../models/customer.model")
+const Customer = require("./../../models/auth/customer.model")
+const bcrypt = require("bcrypt")
 
 
 const getAll = async () => {
@@ -11,7 +12,9 @@ const getById = async (id) => {
     return customer
 }
 
-const create = (customerData) => {
+const create = async (customerData) => {
+    const hash = await bcrypt.hash(customerData.password, 10)
+    customerData.password = hash;
     const customer = Customer.create(customerData)
     return customer
 }
@@ -26,4 +29,9 @@ const deleteById = (id) => {
     return customerToDelete
 }
 
-module.exports = { getAll, getById, create, updateById, deleteById}
+const findEmail = (mail) => {
+    const validatingEmail = Customer.findOne({email: mail});
+     
+    return validatingEmail;
+} 
+module.exports = { getAll, getById, create, updateById, deleteById, findEmail}
