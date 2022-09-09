@@ -25,7 +25,5 @@ const auth = ( request, response, next ) =>{
 
     }
 }
-
-
-
 module.exports = auth
+

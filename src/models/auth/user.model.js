@@ -15,7 +15,12 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     minLength: 3
-  }
+  },
+  createdAt: { 
+    type: Date, 
+    default: Date.now
+ }
+
 })
 
 module.exports = mongoose.model("users", userSchema)

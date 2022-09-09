@@ -15,3 +15,4 @@ const verify = ( token ) =>{
 }
 
 module.exports = { sign, verify }
+
