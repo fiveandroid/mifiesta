@@ -5,6 +5,8 @@ const routerAuth = require("./routes/auth/auth.route");
 const routeCustomer = require("./routes/auth/customer.route");
 const routeProvider = require("./routes/auth/provider.route");
 
+const routeMsg = require("./routes/msg/msg.route")
+
 const app = express();
 
 // Middleware
@@ -16,6 +18,7 @@ app.use("/users", routerUsers);
 app.use("/login", routerAuth);
 app.use("/customer", routeCustomer);
 app.use("/provider", routeProvider);
+app.use("/msgs", routeMsg)
 
 app.get("/", (request, response) => {
   response.json({
