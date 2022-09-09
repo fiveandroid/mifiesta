@@ -5,7 +5,7 @@ const sendMail = async ( msgData ) =>{
 
     msgData.from = 'jvreyesa@hotmail.com'
 
-    console.log (msgData)
+    
     // const msg = {
         
     // to: 'juan.reyes.aguilar@gmail.com', // Change to your recipient
