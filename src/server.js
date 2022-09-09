@@ -4,7 +4,6 @@ const routerUsers = require("./routes/auth/user.route");
 const routerAuth = require("./routes/auth/auth.route");
 const routeCustomer = require("./routes/auth/customer.route");
 const routeProvider = require("./routes/auth/provider.route");
-
 const routeMsg = require("./routes/msg/msg.route")
 
 const app = express();
