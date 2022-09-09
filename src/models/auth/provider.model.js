@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-require("./categories.model")
-mongoose.model("Categories");
+require("../category/category.model")
+mongoose.model("Category");
 
 const ProviderSchema = new Schema({
     companyName: {
@@ -54,10 +54,10 @@ const ProviderSchema = new Schema({
         maxlength: 1000,
         required: true
     },    
-    categories: {
+    categories: [{
         type: Schema.ObjectId,
-        ref: "Categories"
-    },
+        ref: "Category"
+    }],
     subscriptionPlan: {
         type: String,
         maxlength: 500,
