@@ -5,6 +5,7 @@ const routerAuth = require("./routes/auth/auth.route");
 const routeCustomer = require("./routes/auth/customer.route");
 const routeProvider = require("./routes/auth/provider.route");
 const routeCategory = require("./routes/category/category.route");
+const routeMsg = require("./routes/msg/msg.route")
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use("/login", routerAuth);
 app.use("/customer", routeCustomer);
 app.use("/provider", routeProvider);
 app.use("/category", routeCategory);
+app.use("/msgs", routeMsg)
 
 app.get("/", (request, response) => {
   response.json({
