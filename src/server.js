@@ -4,7 +4,9 @@ const routerUsers = require("./routes/auth/user.route");
 const routerAuth = require("./routes/auth/auth.route");
 const routeCustomer = require("./routes/auth/customer.route");
 const routeProvider = require("./routes/auth/provider.route");
-const routeMsg = require("./routes/msg/msg.route")
+const routeCategory = require("./routes/category/category.route");
+const routeMsg = require("./routes/msg/msg.route");
+const routeRequest = require("./routes/request/request.route");
 
 const app = express();
 
@@ -17,7 +19,9 @@ app.use("/users", routerUsers);
 app.use("/login", routerAuth);
 app.use("/customer", routeCustomer);
 app.use("/provider", routeProvider);
-app.use("/msgs", routeMsg)
+app.use("/category", routeCategory);
+app.use("/msgs", routeMsg);
+app.use("/request", routeRequest);
 
 app.get("/", (request, response) => {
   response.json({
