@@ -5,7 +5,7 @@ const {
   deleteById,
   updateById,
   getById
-} = require("../../usecases/product/Product.usecase");
+} = require("../../usecases/products/Product.usecase");
 
 const router = express.Router();
 
@@ -113,14 +113,4 @@ router.get("/:id", async (request, response) => {
     });
   }
 });
-module.exports = router;jvreyesa@DESKTOP-2DI1JC2:~/mifiesta/src/routes/product$
-
-
-
-
-
-
-
-
-
-
+module.exports = router;
