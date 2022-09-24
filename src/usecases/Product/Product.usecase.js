@@ -17,7 +17,7 @@ const deleteById = (id) => {
 }
 
 const updateById = (id, newProductData) => {
-    const productUpdated = Product.findByIdAndUpdate(id, newCategoryData)
+    const productUpdated = Product.findByIdAndUpdate(id, newProductData)
     return productUpdated
 }
 
